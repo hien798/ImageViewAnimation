@@ -64,9 +64,10 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    PhotoCollectionViewCell *cell = (PhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
+//    PhotoCollectionViewCell *cell = (PhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
 
-    CGRect sourceFrame = [cell convertRect:cell.bounds toView:self.view];
+    CGRect sourceFrame = [self.collectionView convertRect:attributes.frame toView:self.collectionView.superview];
     
     _popAnimation.sourceFrame = sourceFrame;
 
@@ -82,6 +83,7 @@
     vc.delegate = self;
     vc.transitioningDelegate = self;
     [self presentViewController:vc animated:YES completion:nil];
+    NSLog(@"lalalalalalaq");
     
 }
 

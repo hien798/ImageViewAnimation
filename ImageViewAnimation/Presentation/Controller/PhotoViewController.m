@@ -234,9 +234,18 @@
                     self.backgroundView.alpha = 1;
                     self.view.backgroundColor = [UIColor blackColor];
                 } completion:^(BOOL finished) {
-                    
+
                 }];
             }
+            
+//            [UIView animateWithDuration:0.1 animations:^{
+//                photoView.imageView.frame = self.startFrame;
+//                self.backgroundView.alpha = 1;
+//                self.view.backgroundColor = [UIColor blackColor];
+//            } completion:^(BOOL finished) {
+//
+//            }];
+            
             break;
         }
         default:

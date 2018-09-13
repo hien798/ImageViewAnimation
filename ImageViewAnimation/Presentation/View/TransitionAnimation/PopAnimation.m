@@ -9,7 +9,7 @@
 #import "PopAnimation.h"
 #import <AVFoundation/AVFoundation.h>
 
-const NSTimeInterval kPopDuration = 1.0;
+const NSTimeInterval kPopDuration = 0.50;
 
 @interface PopAnimation ()
 
@@ -73,7 +73,7 @@ const NSTimeInterval kPopDuration = 1.0;
     [container addSubview:toView];
     [container bringSubviewToFront:toView];
     
-    [UIView animateWithDuration:kPopDuration delay:0.0 usingSpringWithDamping:0.5 initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:kPopDuration delay:0.0 usingSpringWithDamping:0.7 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         toView.transform = CGAffineTransformIdentity;
         toView.center = CGPointMake(CGRectGetMidX(destinationFrame), CGRectGetMidY(destinationFrame));
     } completion:^(BOOL finished) {
@@ -84,8 +84,8 @@ const NSTimeInterval kPopDuration = 1.0;
 
 - (void)dismissTransition:(nonnull id<UIViewControllerContextTransitioning>)transitionContext {
 
-    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIView *_fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
+//    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+//    UIView *_fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
     
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *toView = toVC.view;
@@ -103,7 +103,7 @@ const NSTimeInterval kPopDuration = 1.0;
     
     [container addSubview:fromView];
     
-    [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.5 initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:kPopDuration delay:0.0 usingSpringWithDamping:0.7 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         fromView.transform = scaleTransform;
         fromView.center = CGPointMake(CGRectGetMidX(self.sourceFrame), CGRectGetMidY(self.sourceFrame));
         fromView.frame = self.sourceFrame;
